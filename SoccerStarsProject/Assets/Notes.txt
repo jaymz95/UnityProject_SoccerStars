@@ -1,0 +1,18 @@
+- Enemy idle animation ran at 6 FPS
+- Enemy walking animation ran at 5 FPS 
+(note: added a no gun animation in case you want to use it somewhere - totally optional
+could do enemies dont pull out gun while moving until within a distance of them or something- just an idea)
+
+- Enemy Boss walking movement and idle movement done at 3 FPS
+
+- Main Character idle movement ran at 4 FPS
+- Main Character movement ran at 7 FPS
+- Kicking movements done at 5 FPS
+
+- Also feel free to change FPS rates to make it what you think looks best
+, just letting you know the FPS I animated them at, as a basis to go off.
+
+- Feel free to change the background or even a different one for each level.
+- The level designs i had are a grassy one, stony one and desert one. but feel free again to change that if you dont like my suggestions
+
+Also Sorry they look shit, I'm useless at graphics. :(
