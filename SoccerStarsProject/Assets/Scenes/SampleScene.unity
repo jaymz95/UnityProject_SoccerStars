@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 363714671}
   - component: {fileID: 363714673}
   - component: {fileID: 363714674}
+  - component: {fileID: 363714675}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -270,7 +271,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f0ef995d3d91bda44857b6cf69b988dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac9df404b64ef9e4b982d5831d259145, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -320,6 +321,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   run: {fileID: 0}
+--- !u!111 &363714675
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363714669}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6bd0098c006cc3b4fbff984b17556357, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

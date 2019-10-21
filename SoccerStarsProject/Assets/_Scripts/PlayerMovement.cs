@@ -20,22 +20,53 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
-        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        Run();
+        
+    }
+
+    private void Run()
+    {
+        // Run animation
+
+
+        
+
+        
+        // if pressing 'Q' kick
+        if(Input.GetKey("q"))
         {
-            run.Play("blue_run");
+            run.Play("blue_kick");
         }
-        else if(Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
+        if (run.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8 && !run.IsInTransition(0)) //// FIX THIS
         {
-            run.Play("New State");
+            // if pressing 'A' run left animation
+            if(Input.GetAxis("Horizontal") < 0 && !Input.GetKey("q"))
+            {
+                run.Play("blue_run_left");
+            }
+
+            // else if pressing 'D' run right animation
+            else if(Input.GetAxis("Horizontal") > 0 && !Input.GetKey("q"))
+            {
+                run.Play("blue_run");
+            }
+            // not going right or left, back to idle state
+            else if(Input.GetAxis("Horizontal") == 0 && !Input.GetKey("q"))
+            {
+                run.Play("New State");
+            }
         }
+       
     }
 
     private void Move()
     {
         // get a change in direction
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        //var errorr = Input.GetAxis("Horizontal");
+        //Debug.Log(errorr);
 
-        // calculate a new x position
+        // calculate a new x position (character position + moveSpeed)
         var newXPos = transform.position.x + deltaX;
 
         transform.position = new Vector2(newXPos, transform.position.y);
