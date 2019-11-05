@@ -24,39 +24,39 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    bool AnimatorIsPlaying(){
+        return run.GetCurrentAnimatorStateInfo(0).length >
+        run.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
+
     private void Run()
     {
         // Run animation
-
-
-        
-
         
         // if pressing 'Q' kick
         if(Input.GetKey("q"))
         {
             run.Play("blue_kick");
         }
-        if (run.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8 && !run.IsInTransition(0)) //// FIX THIS
-        {
-            // if pressing 'A' run left animation
-            if(Input.GetAxis("Horizontal") < 0 && !Input.GetKey("q"))
-            {
-                run.Play("blue_run_left");
-            }
 
-            // else if pressing 'D' run right animation
-            else if(Input.GetAxis("Horizontal") > 0 && !Input.GetKey("q"))
-            {
-                run.Play("blue_run");
-            }
-            // not going right or left, back to idle state
-            else if(Input.GetAxis("Horizontal") == 0 && !Input.GetKey("q"))
-            {
-                run.Play("New State");
-            }
+        // if pressing 'A' run left animation
+        if(Input.GetAxis("Horizontal") < 0 && !Input.GetKey("q"))
+        {
+            run.Play("blue_run_left");
         }
-       
+
+        // else if pressing 'D' run right animation
+        else if(Input.GetAxis("Horizontal") > 0 && !Input.GetKey("q"))
+        {
+            run.Play("blue_run");
+        }
+        // not going right or left, back to idle state. 
+        // with normalised time so the other animation play through
+        else if(run.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8)
+        {
+            run.Play("New State");
+        }
+        
     }
 
     private void Move()
