@@ -34,27 +34,32 @@ public class PlayerMovement : MonoBehaviour
         // Run animation
         
         // if pressing 'Q' kick
-        if(Input.GetKey("q"))
-        {
-            run.Play("blue_kick");
-        }
+       
 
         // if pressing 'A' run left animation
-        if(Input.GetAxis("Horizontal") < 0 && !Input.GetKey("q"))
+        if(Input.GetAxis("Horizontal") < 0 )
         {
             run.Play("blue_run_left");
+            if(Input.GetKey("q"))
+            {
+                run.Play("blue_kick_left");
+            }
         }
 
         // else if pressing 'D' run right animation
-        else if(Input.GetAxis("Horizontal") > 0 && !Input.GetKey("q"))
+        else if(Input.GetAxis("Horizontal") > 0)
         {
             run.Play("blue_run");
+            if(Input.GetKey("q"))
+            {
+                run.Play("blue_kick");
+            }
         }
         // not going right or left, back to idle state. 
         // with normalised time so the other animation play through
         else if(run.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8)
         {
-            run.Play("New State");
+            run.Play("blue_idle");
         }
         
     }
