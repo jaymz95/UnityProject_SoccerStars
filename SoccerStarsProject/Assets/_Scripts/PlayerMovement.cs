@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 10.0f;
 
     public Animator run;
+    public bool direction = true;
 
     // Private Methods
 
@@ -34,11 +35,23 @@ public class PlayerMovement : MonoBehaviour
         // Run animation
         
         // if pressing 'Q' kick
+        if(Input.GetKey("q"))
+        {
+            if(direction == true)
+            {
+                run.Play("blue_kick");
+            }
+            else if(direction == false)
+            {
+                run.Play("blue_kick_left");
+            }
+        }
        
 
         // if pressing 'A' run left animation
         if(Input.GetAxis("Horizontal") < 0 )
         {
+            direction = false;
             run.Play("blue_run_left");
             if(Input.GetKey("q"))
             {
@@ -49,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         // else if pressing 'D' run right animation
         else if(Input.GetAxis("Horizontal") > 0)
         {
+            direction = true;
             run.Play("blue_run");
             if(Input.GetKey("q"))
             {
