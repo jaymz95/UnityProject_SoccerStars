@@ -54,8 +54,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\BossMovement.cs" />
+     <Compile Include="Assets\_Scripts\CameraController.cs" />
+     <Compile Include="Assets\_Scripts\CameraFollow.cs" />
      <Compile Include="Assets\_Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\_Scripts\ScrollingBackground.cs" />
      <None Include="Assets\Notes.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/james/Documents/SoccerStars/SoccerStarsProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

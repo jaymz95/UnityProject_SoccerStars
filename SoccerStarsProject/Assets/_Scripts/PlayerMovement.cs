@@ -59,6 +59,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown("space"))
+        {
+
+            run.Play("blue_kick");
+           
+        }
+
         // else if pressing 'D' run right animation
         else if(Input.GetAxis("Horizontal") > 0)
         {
@@ -89,5 +96,7 @@ public class PlayerMovement : MonoBehaviour
         var newXPos = transform.position.x + deltaX;
 
         transform.position = new Vector2(newXPos, transform.position.y);
+
+       
     }
 }
