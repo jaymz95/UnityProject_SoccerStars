@@ -14,7 +14,14 @@ public class Spawn : MonoBehaviour
     [SerializeField]
     private float intervalRate = 0.3f;
 
+    private EnemyMovement enemy;
+    private GameObject ChildGameObject;
+    private int index = 0;
+    private bool nextSpawn = false;
+
     private GameObject enemyParent;
+    private GameObject player;
+    private GameObject sPoints;
 
     private IList<SpawnPoints> spawnPoints;
 
@@ -24,6 +31,9 @@ public class Spawn : MonoBehaviour
     void Start()
     {
         // get the EnemyParent object
+        
+        sPoints = GameObject.Find("SpawnPoints");
+        player = GameObject.Find("player");
         enemyParent = GameObject.Find("EnemyParent");
         if (!enemyParent)
         {
@@ -40,7 +50,8 @@ public class Spawn : MonoBehaviour
         // use InvokeRepeating to call a spawn method to spawn one enemy
         // create the stack to spawn from
 
-        spawnStack = ShuffleList.CreateShuffledStack(spawnPoints);
+        //spawnStack = ShuffleList.CreateShuffledStack(spawnPoints);
+        ChildGameObject = sPoints.transform.GetChild (0).gameObject;
 
         // call the spawn method every n seconds   
         InvokeRepeating("Spawns", delayTime, intervalRate);
@@ -48,21 +59,45 @@ public class Spawn : MonoBehaviour
 
     private void Spawns()    // create one enemy
     {
-        Debug.Log("Text: ");
         // create a new enemy, put it at the spawn point
         //var randomIndex = UnityEngine.Random.Range(0, spawnPoints.Count);
         //var currPoint = spawnPoints[randomIndex];
         // if the stack is empty, refill
-        if( spawnStack.Count == 0)
+        /*if( spawnStack.Count == 0)
         {
             spawnStack = ShuffleList.CreateShuffledStack(spawnPoints);
             //spawnStack = spawnPoints;
-        }
+        }*/
+
         // select the next from the stack (randomised)
-        var currPoint = spawnStack.Pop();
-        var enemy = Instantiate(enemyPrefab, enemyParent.transform);
+        var currPoint = spawnPoints[index];
+        
+        /*if(nextSpawn == true){
+            index++;
+            ChildGameObject = sPoints.transform.GetChild (index).gameObject;
+            nextSpawn = false;
+        }*/
+        Debug.Log("player: " + player.transform.position.x);
+        Debug.Log("SpawnPoint: " + ChildGameObject.transform.position.x);
+
+        if(player.transform.position.x < ChildGameObject.transform.position.x+5 && 
+            player.transform.position.x > ChildGameObject.transform.position.x-10 && 
+            nextSpawn == false){
+            enemy = Instantiate(enemyPrefab, enemyParent.transform);
+            enemy.transform.position = currPoint.transform.position;
+
+            index++;
+            if (sPoints.transform.GetChild (index).gameObject != null){
+                ChildGameObject = sPoints.transform.GetChild (index).gameObject;   
+            }
+            else{
+                nextSpawn = true;
+            }
+
+        }
+        //EnemyMovement enemy = Instantiate(enemyPrefab, enemyParent.transform);
         // set the enemy at the spawn point
-        enemy.transform.position = currPoint.transform.position;
+        //enemy.transform.position = currPoint.transform.position;
 
     }
 }

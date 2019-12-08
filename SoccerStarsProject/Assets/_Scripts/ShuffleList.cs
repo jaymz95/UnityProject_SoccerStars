@@ -9,15 +9,32 @@ public class ShuffleList : MonoBehaviour
                     where T : Object
     {
         var stack = new Stack<T>();
+        var stacks = new Stack<T>();
         var list = new List<T>(values);
+        var i = 0;
         while( list.Count > 0)
         {
-            var randomIndex = Random.Range(0, list.Count - 1);
-            var randomItem = list[randomIndex];
-            list.RemoveAt(randomIndex);
-            stack.Push(randomItem);
+            //var randomIndex = Random.Range(0, list.Count - 1);
+            //var randomItem = list[randomIndex];
+            
+            stack.Push(list[i]);
+            list.RemoveAt(i);
+            //i++;
         }
-        return stack;
+        while( stack.Count > 0)
+        {
+            //var randomIndex = Random.Range(0, list.Count - 1);
+            //var randomItem = list[randomIndex];
+            
+            stacks.Push(stack.Pop());
+            //list.RemoveAt(i);
+            //i++;
+        }
+        /*while( stacks.Count > 0)
+        {
+            Debug.Log("stacks: " + stacks.Pop());
+        }*/
+        return stacks;
     }
     
 }
