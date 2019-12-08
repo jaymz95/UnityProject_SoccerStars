@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour
 {
     // == fields ==
     [SerializeField]
-    private BossMovement enemyPrefab;  // what to spawn
+    private EnemyMovement enemyPrefab;  // what to spawn
 
     [SerializeField]
     private float delayTime = 0.5f;
