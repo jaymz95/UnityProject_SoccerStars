@@ -59,6 +59,9 @@
      <Compile Include="Assets\_Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\ScrollingBackground.cs" />
+     <Compile Include="Assets\_Scripts\ShuffleList.cs" />
+     <Compile Include="Assets\_Scripts\Spawn.cs" />
+     <Compile Include="Assets\_Scripts\SpawnPoints.cs" />
      <None Include="Assets\Notes.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/james/Documents/SoccerStars/SoccerStarsProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
