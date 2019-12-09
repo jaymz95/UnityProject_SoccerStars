@@ -6,11 +6,14 @@ public class Chase : MonoBehaviour
 {
     public Transform[] patrolPoints;
     public float speed;
+    public float increaseSpeed;
     Transform currentPatrolPoint;
     int currentPatrolIndex;
     public Transform target;
     public float chaseRange;
     public Animator run;
+    
+    float s = 0.0f;
 
 
     // Start is called before the first frame update
@@ -33,17 +36,24 @@ public class Chase : MonoBehaviour
             Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards (transform.rotation, q, 0);
             // if pressing 'A' run left animation
-            if(target.position.x < transform.position.x )
+            if(target.position.x+2 < transform.position.x )
             {
                 run.Play("boss_run_left");
                 transform.Translate(Vector3.left * Time.deltaTime * speed);
             }
 
             // else if pressing 'D' run right animation
-            else if(target.position.x > transform.position.x)
-            {
+            else if(target.position.x-2 > transform.position.x){
                 run.Play("boss_run");
+                
+                //speed += s;
+                //s += increaseSpeed;
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
+                
+                //transform.Translate(increaseSpeed);
+            }
+            else{
+
             }
         }
 

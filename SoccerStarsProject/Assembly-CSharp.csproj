@@ -57,9 +57,11 @@
      <Compile Include="Assets\_Scripts\CameraController.cs" />
      <Compile Include="Assets\_Scripts\CameraFollow.cs" />
      <Compile Include="Assets\_Scripts\Chase.cs" />
+     <Compile Include="Assets\_Scripts\ChaseEnemy.cs" />
      <Compile Include="Assets\_Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\ScrollingBackground.cs" />
+     <Compile Include="Assets\_Scripts\Shoot.cs" />
      <Compile Include="Assets\_Scripts\ShuffleList.cs" />
      <Compile Include="Assets\_Scripts\Spawn.cs" />
      <Compile Include="Assets\_Scripts\SpawnPoints.cs" />
