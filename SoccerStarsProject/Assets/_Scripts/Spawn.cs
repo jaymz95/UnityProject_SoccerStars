@@ -81,7 +81,7 @@ public class Spawn : MonoBehaviour
         Debug.Log("SpawnPoint: " + ChildGameObject.transform.position.x);
 
         if(player.transform.position.x < ChildGameObject.transform.position.x+5 && 
-            player.transform.position.x > ChildGameObject.transform.position.x-10 && 
+            player.transform.position.x > ChildGameObject.transform.position.x-Random.Range(0, 15) && 
             nextSpawn == false){
             enemy = Instantiate(enemyPrefab, enemyParent.transform);
             enemy.transform.position = currPoint.transform.position;
