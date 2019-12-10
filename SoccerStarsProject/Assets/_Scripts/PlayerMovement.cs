@@ -12,11 +12,19 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D Temporary_RigidBody;
 
     public GameObject player;
+    BoxCollider2D m_Collider;
+    float scaleX, scaleY, offsetX, offsetY;
 
     // Private Methods
 
     void Start()
     {
+        m_Collider = GetComponent<BoxCollider2D>();
+
+        scaleX = 65.0f;
+        scaleY = 100.0f;
+        offsetX = 0.0f;
+        offsetY = 0.0f;
         run = GetComponent<Animator>();
         Temporary_RigidBody = player.GetComponent<Rigidbody2D>();
     }
@@ -57,6 +65,14 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = false;
             run.Play("blue_run_left");
+            if(Input.GetKey("r"))
+            {
+                moveSpeed = 15.0f;
+            }
+            else if(!Input.GetKey("r"))
+            {
+                moveSpeed = 10.0f;
+            }
             if(Input.GetKey("q"))
             {
                 run.Play("blue_kick_left");
@@ -75,15 +91,44 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = true;
             run.Play("blue_run");
+            if(Input.GetKey("r"))
+            {
+                moveSpeed = 15.0f;
+            }
+            else if(!Input.GetKey("r"))
+            {
+                moveSpeed = 10.0f;
+            }
             if(Input.GetKey("q"))
             {
                 run.Play("blue_kick");
             }
         }
+        // if pressing Left Shift play crouch animation
+        else if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            
+            scaleX = 65.0f;
+            scaleY = 50.0f;
+            offsetX = 0.0f;
+            offsetY = -25.0f;
+
+            m_Collider.size = new Vector3(scaleX, scaleY);
+            m_Collider.offset = new Vector3(offsetX, offsetY);
+            run.Play("blue_crouch");
+        }
+
         // not going right or left, back to idle state. 
         // with normalised time so the other animation play through
         else if(run.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8)
         {
+            scaleX = 65.0f;
+            scaleY = 100.0f;
+            offsetX = 0.0f;
+            offsetY = 0.0f;
+            
+            m_Collider.size = new Vector3(scaleX, scaleY);
+            m_Collider.offset = new Vector3(offsetX, offsetY);
             run.Play("blue_idle");
         }
         

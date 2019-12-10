@@ -142,5 +142,5 @@ MonoBehaviour:
   patrolPoints: []
   speed: 1
   target: {fileID: 0}
-  chaseRange: 10
+  chaseRange: 15
   run: {fileID: 3435418452436311521}
