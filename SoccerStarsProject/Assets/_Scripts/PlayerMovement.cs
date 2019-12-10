@@ -12,8 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D Temporary_RigidBody;
 
     public GameObject player;
+    
+    public GameObject health;
     BoxCollider2D m_Collider;
     float scaleX, scaleY, offsetX, offsetY;
+
+    
+    private Sprite sprite;
 
     // Private Methods
 
@@ -153,6 +158,19 @@ public class PlayerMovement : MonoBehaviour
         if(col.gameObject.name == "bullet(Clone)"){
             //Debug.Log("Definatly working 8)");
             Destroy(col.gameObject);
+
+            
+            //sprite = Resources.Load<Sprite>("greyHeart");
+            Sprite enemySprites = Resources.Load<Sprite>("greyHeart");
+            Debug.Log(enemySprites.name);
+            //Debug.Log(enemySprites[0]);
+            //Debug.Log(enemySprites[1]);
+            //Debug.Log(enemySprites[2]);
+            //Sprite r = enemySprites.Find("w");
+            Transform heart;
+            heart = health.transform.Find("heart");
+            SpriteRenderer sr = heart.GetComponent<SpriteRenderer>();
+            sr.sprite = enemySprites;
         }
     }
 
