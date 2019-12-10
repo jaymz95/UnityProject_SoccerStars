@@ -79,12 +79,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown("space"))
+        /*if(Input.GetKeyDown("space"))
         {
 
             Temporary_RigidBody.AddForce(transform.up * 900);
            
-        }
+        }*/
 
         // else if pressing 'D' run right animation
         else if(Input.GetAxis("Horizontal") > 0)
@@ -148,4 +148,16 @@ public class PlayerMovement : MonoBehaviour
 
        
     }
+    void OnCollisionEnter2D(Collision2D col) {
+        //Debug.Log("working???");
+        if(col.gameObject.name == "bullet(Clone)"){
+            //Debug.Log("Definatly working 8)");
+            Destroy(col.gameObject);
+        }
+    }
+
+    /*void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
+    }*/
 }

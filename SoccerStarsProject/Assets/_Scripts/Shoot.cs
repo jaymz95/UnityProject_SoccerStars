@@ -39,16 +39,17 @@ public class Shoot : MonoBehaviour
             Temporary_RigidBody.AddForce(-transform.right * Bullet_Forward_Force);
 
             temp = Temporary_RigidBody;
-            if(Temporary_RigidBody.position.x < player.transform.position.x)
+            /*if(Temporary_RigidBody.position.x < player.transform.position.x)
             {
                 Destroy(Temporary_Bullet_Handler, 0.0f);
-            }
+            }*/
             //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
             Destroy(Temporary_Bullet_Handler, 2f);
         }
-        if(temp != null && temp.position.x-0.5 < player.transform.position.x)
+        /*if(temp != null && temp.position.x-0.5 < player.transform.position.x && temp.position.y < player.transform.position.y)
         {
             Destroy(Temporary_Bullet_Handler);
-        }
+        }*/
     }
+    
 }

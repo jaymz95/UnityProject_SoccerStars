@@ -58,7 +58,9 @@
      <Compile Include="Assets\_Scripts\CameraFollow.cs" />
      <Compile Include="Assets\_Scripts\Chase.cs" />
      <Compile Include="Assets\_Scripts\ChaseEnemy.cs" />
+     <Compile Include="Assets\_Scripts\CollisionDetection.cs" />
      <Compile Include="Assets\_Scripts\EnemyMovement.cs" />
+     <Compile Include="Assets\_Scripts\Health.cs" />
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\ScrollingBackground.cs" />
      <Compile Include="Assets\_Scripts\Shoot.cs" />
