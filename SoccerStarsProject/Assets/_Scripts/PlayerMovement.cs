@@ -9,12 +9,16 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator run;
     public bool direction = true;
+    public Rigidbody2D Temporary_RigidBody;
+
+    public GameObject player;
 
     // Private Methods
 
     void Start()
     {
         run = GetComponent<Animator>();
+        Temporary_RigidBody = player.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 run.Play("blue_kick");
             }
-            else if(direction == false)
+            else
             {
                 run.Play("blue_kick_left");
             }
@@ -62,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown("space"))
         {
 
-            run.Play("blue_kick");
+            Temporary_RigidBody.AddForce(transform.up * 900);
            
         }
 

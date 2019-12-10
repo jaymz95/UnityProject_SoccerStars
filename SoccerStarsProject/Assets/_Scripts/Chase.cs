@@ -13,16 +13,12 @@ public class Chase : MonoBehaviour
     public float chaseRange;
     public Animator run;
     
-    float s = 0.0f;
-
-
     // Start is called before the first frame update
     void Start()
     {
         currentPatrolIndex = 0;
         currentPatrolPoint = patrolPoints [currentPatrolIndex];
         run = GetComponent<Animator>();
-        //run.Play("boss_run_left");
     }
 
     // Update is called once per frame
@@ -35,33 +31,20 @@ public class Chase : MonoBehaviour
             float angle = Mathf.Atan2 (targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
             Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards (transform.rotation, q, 0);
-            // if pressing 'A' run left animation
+            
+            // if player is to the left of emeny, run left animation
             if(target.position.x+2 < transform.position.x )
             {
                 run.Play("boss_run_left");
                 transform.Translate(Vector3.left * Time.deltaTime * speed);
             }
 
-            // else if pressing 'D' run right animation
+            // if player is to the right of emeny, run right animation
             else if(target.position.x-2 > transform.position.x){
                 run.Play("boss_run");
-                
-                //speed += s;
-                //s += increaseSpeed;
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
-                
-                //transform.Translate(increaseSpeed);
-            }
-            else{
-
             }
         }
 
-
-
-
-
-
-        
     }
 }
