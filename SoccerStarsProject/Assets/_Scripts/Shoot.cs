@@ -14,13 +14,16 @@ public class Shoot : MonoBehaviour
     Rigidbody2D Temporary_RigidBody;
     
     GameObject Temporary_Bullet_Handler;
+    SpriteRenderer Temporary_Sprite_Renderer;
  
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
 
+
     //public GameObject boss = GameObject.Find("boss");
     public Chase bossScript;
     private float newPos, oldPos;
+    private bool newDirection = false;
 
     void Start(){
         newPos = Bullet_Emitter.transform.position.x +2;
@@ -32,14 +35,17 @@ public class Shoot : MonoBehaviour
     {
         bossScript = transform.GetComponent<Chase>();
         //bossScript.moveRight = false;
-        if (bossScript.moveRight == true){
+        if (bossScript.moveRight == true && newDirection == false){
             //Bullet_Emitter.transform.position = Vector3.MoveTowards;
-            Bullet_Emitter.transform.position = new Vector3(newPos, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+            Bullet_Emitter.transform.position = new Vector3(Bullet_Emitter.transform.position.x +1, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+            newDirection = true;
         }
         else if (bossScript.moveRight == false){
             //Bullet_Emitter.transform.position = Vector3.MoveTowards;
-            Bullet_Emitter.transform.position = new Vector3(oldPos, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+            Bullet_Emitter.transform.position = new Vector3(Bullet_Emitter.transform.position.x, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+            newDirection = false;
         }
+
         if (Input.GetKeyDown("space") && Temporary_Bullet_Handler == null)
         {
             //The Bullet instantiation happens here.
@@ -51,9 +57,17 @@ public class Shoot : MonoBehaviour
             //Retrieve the Rigidbody component from the instantiated Bullet and control it.
             
             Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
+            Temporary_Sprite_Renderer = Temporary_Bullet_Handler.GetComponent<SpriteRenderer>();
  
             //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-            Temporary_RigidBody.AddForce(-transform.right * Bullet_Forward_Force);
+            if(newDirection == false){
+                Temporary_RigidBody.AddForce(-transform.right * Bullet_Forward_Force);
+                Temporary_Sprite_Renderer.flipX=false;
+            }
+            else if(newDirection == true){
+                Temporary_RigidBody.AddForce(transform.right * Bullet_Forward_Force);
+                Temporary_Sprite_Renderer.flipX=true;
+            }
 
             temp = Temporary_RigidBody;
             /*if(Temporary_RigidBody.position.x < player.transform.position.x)
