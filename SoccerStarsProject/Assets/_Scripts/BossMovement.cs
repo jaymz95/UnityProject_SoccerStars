@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-        [SerializeField]
+    [SerializeField]
     private float moveSpeed = 10.0f;
+    public bool moveRight = false;
 
     public Animator run;
     public bool direction = true;
@@ -38,12 +39,14 @@ public class BossMovement : MonoBehaviour
         if(Input.GetAxis("Horizontal") < 0 )
         {
             run.Play("boss_run_left");
+            moveRight = false;
         }
 
         // else if pressing 'D' run right animation
         else if(Input.GetAxis("Horizontal") > 0)
         {
             run.Play("boss_run");
+            moveRight = true;
         }
         // not going right or left, back to idle state. 
         // with normalised time so the other animation play through

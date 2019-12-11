@@ -5,8 +5,6 @@ public class Shoot : MonoBehaviour
 {
     //Drag in the Bullet Emitter from the Component Inspector.
     public GameObject Bullet_Emitter;
-
-    
     public GameObject player;
  
     //Drag in the Bullet Prefab from the Component Inspector.
@@ -19,10 +17,29 @@ public class Shoot : MonoBehaviour
  
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
+
+    //public GameObject boss = GameObject.Find("boss");
+    public Chase bossScript;
+    private float newPos, oldPos;
+
+    void Start(){
+        newPos = Bullet_Emitter.transform.position.x +2;
+        oldPos = Bullet_Emitter.transform.position.x;
+    }
        
     // Update is called once per frame
     void Update ()
     {
+        bossScript = transform.GetComponent<Chase>();
+        //bossScript.moveRight = false;
+        if (bossScript.moveRight == true){
+            //Bullet_Emitter.transform.position = Vector3.MoveTowards;
+            Bullet_Emitter.transform.position = new Vector3(newPos, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+        }
+        else if (bossScript.moveRight == false){
+            //Bullet_Emitter.transform.position = Vector3.MoveTowards;
+            Bullet_Emitter.transform.position = new Vector3(oldPos, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
+        }
         if (Input.GetKeyDown("space") && Temporary_Bullet_Handler == null)
         {
             //The Bullet instantiation happens here.

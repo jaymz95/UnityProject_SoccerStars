@@ -4360,7 +4360,7 @@ MonoBehaviour:
   Bullet_Emitter: {fileID: 240262743}
   player: {fileID: 363714669}
   Bullet: {fileID: 1384923458757041008, guid: 08fb3924c3a42ed4fafe203304d7b360, type: 3}
-  Bullet_Forward_Force: 900
+  Bullet_Forward_Force: 0.75
 --- !u!1 &919464793
 GameObject:
   m_ObjectHideFlags: 0

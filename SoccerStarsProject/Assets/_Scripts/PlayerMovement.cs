@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     
     private Sprite sprite;
 
+    private int count = 0;
+
     // Private Methods
 
     void Start()
@@ -158,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         if(col.gameObject.name == "bullet(Clone)"){
             //Debug.Log("Definatly working 8)");
             Destroy(col.gameObject);
+            
 
             
             //sprite = Resources.Load<Sprite>("greyHeart");
@@ -167,8 +170,20 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(enemySprites[1]);
             //Debug.Log(enemySprites[2]);
             //Sprite r = enemySprites.Find("w");
-            Transform heart;
-            heart = health.transform.Find("heart");
+            Transform heart = health.transform.Find("heart (2)");
+            if(count==0){
+                heart = health.transform.Find("heart (2)");
+            }
+            else if(count==1){
+                heart = health.transform.Find("heart (1)");
+            }
+            else if(count==2){
+                heart = health.transform.Find("heart");
+            }
+            else if (count==3){
+                Debug.Log("GAME OVER");
+            }
+            count++;
             SpriteRenderer sr = heart.GetComponent<SpriteRenderer>();
             sr.sprite = enemySprites;
         }
