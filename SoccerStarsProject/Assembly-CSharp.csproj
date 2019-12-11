@@ -64,6 +64,8 @@
      <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\ScrollingBackground.cs" />
      <Compile Include="Assets\_Scripts\Shoot.cs" />
+     <Compile Include="Assets\_Scripts\ShootEnemy.cs" />
+     <Compile Include="Assets\_Scripts\ShootPlayer.cs" />
      <Compile Include="Assets\_Scripts\ShuffleList.cs" />
      <Compile Include="Assets\_Scripts\Spawn.cs" />
      <Compile Include="Assets\_Scripts\SpawnPoints.cs" />

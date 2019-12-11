@@ -11,6 +11,7 @@ public class ChaseEnemy : MonoBehaviour
     public Transform target;
     public float chaseRange;
     public Animator run;
+    public bool moveRight = false;
 
 
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class ChaseEnemy : MonoBehaviour
             // if player is to the left of emeny, run left animation
             if(target.position.x+2 < transform.position.x )
             {
+                moveRight = false;
                 run.Play("enemy_run_left");
                 transform.Translate(Vector3.left * Time.deltaTime * speed);
             }
@@ -42,6 +44,7 @@ public class ChaseEnemy : MonoBehaviour
             // if player is to the right of emeny, run right animation
             else if(target.position.x-2 > transform.position.x)
             {
+                moveRight = true;
                 run.Play("enemy_run");
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
                 

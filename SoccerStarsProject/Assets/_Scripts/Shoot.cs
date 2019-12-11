@@ -5,7 +5,6 @@ public class Shoot : MonoBehaviour
 {
     //Drag in the Bullet Emitter from the Component Inspector.
     public GameObject Bullet_Emitter;
-    public GameObject player;
  
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
@@ -22,12 +21,9 @@ public class Shoot : MonoBehaviour
 
     //public GameObject boss = GameObject.Find("boss");
     public Chase bossScript;
-    private float newPos, oldPos;
     private bool newDirection = false;
 
     void Start(){
-        newPos = Bullet_Emitter.transform.position.x +2;
-        oldPos = Bullet_Emitter.transform.position.x;
     }
        
     // Update is called once per frame
@@ -40,13 +36,13 @@ public class Shoot : MonoBehaviour
             Bullet_Emitter.transform.position = new Vector3(Bullet_Emitter.transform.position.x +1, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
             newDirection = true;
         }
-        else if (bossScript.moveRight == false){
+        else if (bossScript.moveRight == false && newDirection == true){
             //Bullet_Emitter.transform.position = Vector3.MoveTowards;
             Bullet_Emitter.transform.position = new Vector3(Bullet_Emitter.transform.position.x, Bullet_Emitter.transform.position.y, Bullet_Emitter.transform.position.z);
             newDirection = false;
         }
 
-        if (Input.GetKeyDown("space") && Temporary_Bullet_Handler == null)
+        if (Temporary_Bullet_Handler == null)
         {
             //The Bullet instantiation happens here.
             Temporary_Bullet_Handler = Instantiate(Bullet,Bullet_Emitter.transform.position,Bullet_Emitter.transform.rotation) as GameObject;
@@ -70,17 +66,8 @@ public class Shoot : MonoBehaviour
             }
 
             temp = Temporary_RigidBody;
-            /*if(Temporary_RigidBody.position.x < player.transform.position.x)
-            {
-                Destroy(Temporary_Bullet_Handler, 0.0f);
-            }*/
-            //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
             Destroy(Temporary_Bullet_Handler, 2f);
         }
-        /*if(temp != null && temp.position.x-0.5 < player.transform.position.x && temp.position.y < player.transform.position.y)
-        {
-            Destroy(Temporary_Bullet_Handler);
-        }*/
     }
     
 }

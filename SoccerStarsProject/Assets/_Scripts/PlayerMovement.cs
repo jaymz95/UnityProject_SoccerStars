@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Sprite sprite;
 
     private int count = 0;
+    //public bool moveRight = false;
 
     // Private Methods
 
@@ -86,12 +87,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        /*if(Input.GetKeyDown("space"))
+        if(Input.GetKeyDown("space"))
         {
-
             Temporary_RigidBody.AddForce(transform.up * 900);
-           
-        }*/
+        }
 
         // else if pressing 'D' run right animation
         else if(Input.GetAxis("Horizontal") > 0)
