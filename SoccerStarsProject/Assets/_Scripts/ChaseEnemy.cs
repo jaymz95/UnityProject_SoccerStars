@@ -18,7 +18,7 @@ public class ChaseEnemy : MonoBehaviour
     void Start()
     {
         currentPatrolIndex = 0;
-        currentPatrolPoint = patrolPoints [currentPatrolIndex];
+        //currentPatrolPoint = patrolPoints [currentPatrolIndex];
         run = GetComponent<Animator>();
     }
 

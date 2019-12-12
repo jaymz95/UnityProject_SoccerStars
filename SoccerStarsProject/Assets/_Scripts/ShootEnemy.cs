@@ -9,7 +9,9 @@ public class ShootEnemy : MonoBehaviour
  
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
+    private GameObject Ball;
     private Rigidbody2D temp;
+    public EnemyCount counts;
 
     Rigidbody2D Temporary_RigidBody;
     
@@ -24,12 +26,15 @@ public class ShootEnemy : MonoBehaviour
     public ChaseEnemy bossScript;
     private bool newDirection = false;
 
+
     void Start(){
     }
        
     // Update is called once per frame
     void Update ()
     {
+        Ball = GameObject.Find("Football(Clone)");
+        
         bossScript = transform.GetComponent<ChaseEnemy>();
         //bossScript.moveRight = false;
         if (bossScript.moveRight == true && newDirection == false){
@@ -69,6 +74,34 @@ public class ShootEnemy : MonoBehaviour
             temp = Temporary_RigidBody;
             Destroy(Temporary_Bullet_Handler, 2f);
         }
+        if(newDirection == false)
+        {
+            if(Ball != null && Ball.transform.position.x >= transform.position.x && Ball.transform.position.y <= transform.position.y+1)
+            {
+                Destroy(transform.gameObject);
+                Destroy(Ball.gameObject);
+                counts.enemiesDead++;
+            }
+        }
+        else if(newDirection == true)
+        {
+            if(Ball != null && Ball.transform.position.x <= transform.position.x && Ball.transform.position.y <= transform.position.y+1)
+            {
+                Destroy(transform.gameObject);
+                Destroy(Ball.gameObject);
+                counts.enemiesDead++;
+            }
+        }
+        
     }
+    /*void OnCollisionEnter2D(Collision2D col) {
+        //Debug.Log("working???");
+        if(col.gameObject.name == "Football(Clone)"){
+            //Debug.Log("Definatly working 8)");
+            Destroy(col.gameObject);
+            Destroy(this.gameObject);
+            
+        }
+    }*/
     
 }

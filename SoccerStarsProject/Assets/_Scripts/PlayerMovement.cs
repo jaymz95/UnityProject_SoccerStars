@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 10.0f;
+    public EnemyCount counts;
 
     public Animator run;
     public bool direction = true;
@@ -87,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown("space"))
+        if(Input.GetKeyDown("space") && player.transform.position.y < 1)
         {
             Temporary_RigidBody.AddForce(transform.up * 900);
         }
@@ -154,21 +156,15 @@ public class PlayerMovement : MonoBehaviour
 
        
     }
+    //Health
     void OnCollisionEnter2D(Collision2D col) {
         //Debug.Log("working???");
         if(col.gameObject.name == "bullet(Clone)"){
             //Debug.Log("Definatly working 8)");
             Destroy(col.gameObject);
             
-
-            
-            //sprite = Resources.Load<Sprite>("greyHeart");
             Sprite enemySprites = Resources.Load<Sprite>("greyHeart");
             Debug.Log(enemySprites.name);
-            //Debug.Log(enemySprites[0]);
-            //Debug.Log(enemySprites[1]);
-            //Debug.Log(enemySprites[2]);
-            //Sprite r = enemySprites.Find("w");
             Transform heart = health.transform.Find("heart (2)");
             if(count==0){
                 heart = health.transform.Find("heart (2)");
@@ -178,18 +174,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else if(count==2){
                 heart = health.transform.Find("heart");
-            }
-            else if (count==3){
-                Debug.Log("GAME OVER");
+                SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             }
             count++;
             SpriteRenderer sr = heart.GetComponent<SpriteRenderer>();
             sr.sprite = enemySprites;
         }
     }
-
-    /*void OnCollisionEnter2D(Collision2D col)
-    {
-        Debug.Log("OnCollisionEnter2D");
-    }*/
 }

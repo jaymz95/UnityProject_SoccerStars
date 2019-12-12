@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6749063462267577220}
   - component: {fileID: 8534853908066979809}
   - component: {fileID: 4998551151437213196}
+  - component: {fileID: 478487215153079858}
   m_Layer: 0
   m_Name: Football
   m_TagString: Untagged
@@ -118,3 +119,16 @@ CircleCollider2D:
   m_Offset: {x: -0.15, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &478487215153079858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919139870106143816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86e78a2a25c7d54b8abbd54586f5756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 6919139870106143816}

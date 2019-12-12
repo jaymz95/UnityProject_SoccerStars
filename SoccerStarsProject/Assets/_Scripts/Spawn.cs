@@ -77,6 +77,7 @@ public class Spawn : MonoBehaviour
             ChildGameObject = sPoints.transform.GetChild (index).gameObject;
             nextSpawn = false;
         }*/
+        
         Debug.Log("player: " + player.transform.position.x);
         Debug.Log("SpawnPoint: " + ChildGameObject.transform.position.x);
 

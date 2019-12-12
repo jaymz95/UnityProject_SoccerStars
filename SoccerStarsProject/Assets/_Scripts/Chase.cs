@@ -18,7 +18,7 @@ public class Chase : MonoBehaviour
     void Start()
     {
         currentPatrolIndex = 0;
-        currentPatrolPoint = patrolPoints [currentPatrolIndex];
+        //currentPatrolPoint = patrolPoints [currentPatrolIndex];
         run = GetComponent<Animator>();
     }
 
@@ -50,5 +50,14 @@ public class Chase : MonoBehaviour
             }
         }
 
+    }
+    void OnCollisionEnter2D(Collision2D col) {
+        //Debug.Log("working???");
+        if(col.gameObject.name == "Football(Clone)"){
+            //Debug.Log("Definatly working 8)");
+            Destroy(col.gameObject);
+            Destroy(this.gameObject);
+            
+        }
     }
 }

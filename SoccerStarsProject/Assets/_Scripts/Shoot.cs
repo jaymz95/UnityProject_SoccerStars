@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
     private Rigidbody2D temp;
+    public EnemyCount counts;
 
     Rigidbody2D Temporary_RigidBody;
     
@@ -17,7 +18,8 @@ public class Shoot : MonoBehaviour
  
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
-
+    
+    private GameObject Ball;
 
     //public GameObject boss = GameObject.Find("boss");
     public Chase bossScript;
@@ -29,6 +31,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        Ball = GameObject.Find("Football(Clone)");
         bossScript = transform.GetComponent<Chase>();
         //bossScript.moveRight = false;
         if (bossScript.moveRight == true && newDirection == false){
@@ -67,6 +70,24 @@ public class Shoot : MonoBehaviour
 
             temp = Temporary_RigidBody;
             Destroy(Temporary_Bullet_Handler, 2f);
+        }
+        if(newDirection == false)
+        {
+            if(Ball != null && Ball.transform.position.x >= transform.position.x && Ball.transform.position.y <= transform.position.y+1)
+            {
+                Destroy(transform.gameObject);
+                Destroy(Ball.gameObject);
+                counts.enemiesDead++;
+            }
+        }
+        else if(newDirection == true)
+        {
+            if(Ball != null && Ball.transform.position.x <= transform.position.x && Ball.transform.position.y <= transform.position.y+1)
+            {
+                Destroy(transform.gameObject);
+                Destroy(Ball.gameObject);
+                counts.enemiesDead++;
+            }
         }
     }
     
