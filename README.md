@@ -1,4 +1,6 @@
-# UnityProject_SoccerStars
+# UnityProject_SoccerStars: https://github.com/jaymz95/UnityProject_SoccerStars
+
+## Developer Diary: https://github.com/jaymz95/UnityProject_SoccerStars/issues/1
 
 ## Run game on StartMenu scene
 
@@ -12,6 +14,6 @@
 - 'R' allong with 'A' or 'D' to run faster
 - 'Left Shift' to crouch
 
-## If player is hit 3 times, Game Over
+### If player is hit 3 times, Game Over
 
 
